@@ -2,30 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CollectingCoin : MonoBehaviour
 {
-    public Text PlayerCoins;
-
-    private void Start()
+     
+    private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        PlayerCoins = GetComponent<Text>();
-    }
-
-    
-    private void OnTriggerEnter2D(Collider2D Coin)
-    {
-        if(Coin.gameObject.CompareTag("Player"))
+        if (collider2D.gameObject.CompareTag("Coin"))
         {
-        GameManager.instance.score++;
-            Destroy(Coin.gameObject);
-
+            GameManager.instance.score++;
+            Destroy(collider2D.gameObject);
         }
 
+        if(GameManager.instance.score == 5)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
-    private void Update()
-    {
-        PlayerCoins.text = "Coins: " + GameManager.instance.score;
-    }
 }

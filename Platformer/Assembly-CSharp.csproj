@@ -56,11 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CoinUIText.cs" />
     <Compile Include="Assets\Scripts\CollectingCoin.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Physicstest.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerDeath.cs" />
+    <Compile Include="Assets\Scripts\PlayerLivesText.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
   </ItemGroup>
   <ItemGroup>

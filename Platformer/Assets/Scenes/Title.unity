@@ -283,7 +283,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 236069851}
-        m_MethodName: nextScene
+        m_MethodName: NextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -371,6 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbe5e29d52635b47baa3aa360e5de5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  Lives: 3
 --- !u!4 &1151485949
 Transform:
   m_ObjectHideFlags: 0

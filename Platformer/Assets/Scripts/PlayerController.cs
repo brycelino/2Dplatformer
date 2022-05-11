@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+   
     public float speed = 1;
     public float jumpForce = 10;
     private Vector3 respawnPosition;
     public GameObject fallDetector;
-    //public Transform groundCheck;
-    //public float groundCheckRadius;
-    //public LayerMask groundLayer;
-    //private bool isOnGround;
-    public Text PlayerLives;
-
+    //public Text PlayerLives;
+   // public int PlayerLives = 3;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerLives = GetComponent<Text>();
+        //PlayerLives = GetComponent<Text>();
         respawnPosition = transform.position;
 
     }
@@ -28,10 +26,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // isOnGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+       
         float h = Input.GetAxis("Horizontal");
 
-        //transform.Translate(Vector3.right * h * Time.deltaTime * speed);
+       
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
@@ -45,21 +43,27 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") )
         {
-            //rb.AddForce(Vector2.up * jumpForce);
+          
             vel.y = jumpForce;
         }
 
         rb.velocity = vel;
 
-        //PlayerLives.text = "Player Lives: " + GameManager.instance.Lives;
+       
     }
 
     private void OnTriggerEnter2D(Collider2D Collision)
     {
 
-        if (Collision.tag == "FallDetector")
+        if (Collision.tag == "FallDetector" && GameManager.instance.Lives > 0)
         {
             transform.position = respawnPosition;
+            GameManager.instance.Lives--;
+        }
+        if (GameManager.instance.Lives < 1)
+        {
+            SceneManager.LoadScene(2);
+            GameManager.instance.score = 0;
             
         }
 
